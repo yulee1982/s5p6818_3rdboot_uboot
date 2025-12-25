@@ -23,4 +23,7 @@ build:
 
 
 sdcard layout
-
+|main boot record (512 bytes)| +
+|2ndboot_bl1   (nsih+2ndboot, start of the first sector) +
+|3rdboot_uboot (nsih_+uboot, start of sector 129) (before partition, reserved area). +
+|first partition, ext4 format
