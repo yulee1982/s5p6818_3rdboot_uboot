@@ -1,0 +1,26 @@
+based on u-boot-friendlycore
+
+modified file
+u-boot/arch/arm/cpu/armv8/start.S	
+  .skip   60
+  .word 0x00000000    // 0x040 : Device Read Address for next boot
+  .word 0x000A0000    // 0x044 : Load Size for Uboot (640K)
+  .word 0x43c00000    // 0x048 : Load Address for Uboot.
+  .word 0x43c00000    // 0x04C : Launch Address for Uboot.
+
+  .skip 428
+  .word 0x4849534E    // 0x1FC        "NSIH"
+Check the source code, the above code has been added. Similar to the operations in 2ndboot_bl.
+
+u-boot/include/configs/s5p6818_nanopi3.h
+Changed to support nanopc-t3-plus. 
+no longer requires ramdisk, we will boot with initramfs.
+the files need to be provided to uboot: Image s5p6818-nanopim3.dtb logo.bmp(width 480x800 pixels)
+
+build:
+./s5p6818_uboot.sh
+(CROSS_COMPILE= change to your compiler address)
+
+
+sdcard layout
+
